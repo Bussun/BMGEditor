@@ -1,4 +1,8 @@
-﻿namespace BMGEditor
+﻿using System;
+using System.Collections;
+using System.Windows.Forms;
+
+namespace BMGEditor
 {
     partial class MainForm
     {
