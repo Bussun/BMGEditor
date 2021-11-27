@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BMGEditor.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,5 +37,10 @@ namespace BMGEditor
             m_FileTbl.Close();
         }
 
+        private void openEntryBtn_Click(object sender, EventArgs e)
+        {
+            Form txtEditForm = new TextEntryEditorForm(m_File.Entries[entriesListBox.SelectedIndex]);
+            txtEditForm.Show();
+        }
     }
 }

@@ -92,9 +92,9 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(235, 234);
+            this.richTextBox1.Location = new System.Drawing.Point(130, 234);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(125, 120);
+            this.richTextBox1.Size = new System.Drawing.Size(230, 120);
             this.richTextBox1.TabIndex = 7;
             this.richTextBox1.Text = "";
             // 
@@ -113,6 +113,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "TextEntryEditorForm";
             this.Text = "TextEntryEditorForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TextEntryEditorForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
