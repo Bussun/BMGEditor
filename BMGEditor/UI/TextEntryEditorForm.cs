@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BMGEditor
+namespace BMGEditor.UI
 {
-    public partial class BMGEditForm : Form
+    public partial class TextEntryEditorForm : Form
     {
-        public BMGEditForm(RarcFilesystem arcFs)
+        public TextEntryEditorForm(BMG.TextEntry txtEntry)
         {
             InitializeComponent();
         }

@@ -14,6 +14,8 @@ namespace BMGEditor
         public BcsvEditorForm(RarcFilesystem arcFs)
         {
             InitializeComponent();
+            Text += $" - {Variables.softwareName} {Variables.softwareVersion}";
+            if (Variables.isBeta) Text += " [BETA]";
             m_File = new Bcsv(arcFs.OpenFile($"{arcFs.rootName}/messageid.tbl"));
 
             dgvBcsv.Rows.Clear();

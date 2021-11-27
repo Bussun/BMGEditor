@@ -301,6 +301,7 @@ namespace BMGEditor
 
                 return str;
             }
+
         }
 
 

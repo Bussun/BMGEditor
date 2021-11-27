@@ -18,6 +18,8 @@ namespace BMGEditor
         public MainForm()
         {
             InitializeComponent();
+            Text = $"{Variables.softwareName} {Variables.softwareVersion}";
+            if (Variables.isBeta) this.Text += " [BETA]";
         }
 
         private void openBcsvEditorBtn_Click(object sender, EventArgs e)
@@ -49,6 +51,8 @@ namespace BMGEditor
                         "Error while loading file",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
+                    arc.Close();
+                    return;
                 }
 
                 openBcsvEditorBtn.Enabled = true;

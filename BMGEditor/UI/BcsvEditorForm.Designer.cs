@@ -61,6 +61,7 @@
             // dgvBcsv
             // 
             this.dgvBcsv.AllowUserToResizeRows = false;
+            this.dgvBcsv.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvBcsv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBcsv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBcsv.Location = new System.Drawing.Point(0, 27);
@@ -80,7 +81,7 @@
             this.Controls.Add(this.tsToolbar);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "BcsvEditorForm";
-            this.Text = "[DEBUG] BCSV editor";
+            this.Text = "Entries Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BcsvEditorForm_FormClosing);
             this.tsToolbar.ResumeLayout(false);
             this.tsToolbar.PerformLayout();
