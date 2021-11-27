@@ -12,7 +12,7 @@ namespace BMGEditor
         {
             m_File = file;
             m_File.BigEndian = true;
-            m_File.Encoding = Encoding.GetEncoding("shift-jis");
+            m_File.Encoding = Encoding.GetEncoding(20127);
 
             Fields = new Dictionary<uint, Field>();
             Entries = new List<Entry>();
@@ -37,7 +37,6 @@ namespace BMGEditor
                 field.Type = m_File.Reader.ReadByte();
 
                 string fieldname = Bcsv.HashToFieldName(field.NameHash);
-                field.Name = fieldname;
                 Fields.Add(field.NameHash, field);
             }
 
@@ -344,17 +343,7 @@ namespace BMGEditor
         public static void PopulateHashtable()
         {
             m_HashTable = new Dictionary<uint, string>();
-
-            string[] lines = new string[1];
-            foreach (string _line in lines)
-            {
-                string line = _line.Trim();
-
-                if (line.Length == 0) continue;
-                if (line[0] == '#') continue;
-
-                AddHash(line);
-            }
+            AddHash("wowHowDidYouFindThis");
         }
 
         public static Dictionary<uint, string> m_HashTable; 

@@ -41,7 +41,7 @@ namespace BMGEditor
             m_File.Stream.Position = m_StringTableOffset + rnoffset;
             root.Name = m_File.ReadString();
             root.FullName = "/" + root.Name;
-
+            rootName = root.FullName;
             m_DirEntries.Add(0, root);
 
             for (uint i = 0; i < m_NumDirNodes; i++)
@@ -237,6 +237,7 @@ namespace BMGEditor
         private uint m_DirNodesOffset;
         private uint m_FileEntriesOffset;
         private uint m_StringTableOffset;
+        public string rootName;
 
         private Dictionary<uint, FileEntry> m_FileEntries;
         private Dictionary<uint, DirEntry> m_DirEntries;

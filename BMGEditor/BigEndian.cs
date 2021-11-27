@@ -29,6 +29,12 @@ namespace BMGEditor
             return (Int32)((val >> 24) | ((val & 0xFF0000) >> 8) | ((val & 0xFF00) << 8) | (val << 24));
         }
 
+        /*public override long ReadInt64()
+        {
+            UInt64 val = base.ReadUInt64();
+            return (Int64)()
+        }*/
+
 
         public override ushort ReadUInt16()
         {

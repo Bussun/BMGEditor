@@ -14,6 +14,7 @@ namespace BMGEditor
         static void Main()
         {
             ApplicationConfiguration.Initialize();
+            Bcsv.PopulateHashtable();
             Application.Run(new MainForm());
         }
     }
