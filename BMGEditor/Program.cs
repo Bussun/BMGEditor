@@ -32,6 +32,7 @@ namespace BMGEditor
             string str = "FF";
             Byte octet = Byte.Parse(str, NumberStyles.HexNumber);
             Console.WriteLine(octet);
+            //BitConverter.ToUInt16()
             
         }
     }
