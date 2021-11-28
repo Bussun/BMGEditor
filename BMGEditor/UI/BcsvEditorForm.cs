@@ -96,5 +96,48 @@ namespace BMGEditor
         {
             m_File.Close();
         }
+
+        private void sortBtn_Click(object sender, EventArgs e)
+        {
+            //foreach (DataGridViewCell cell in dgvBcsv.Columns[0]) { }
+
+            /*for (int i = 0; i < dgvBcsv.RowCount; i++)
+            {
+                DataGridViewCell curCell = dgvBcsv.Rows[i].Cells[0];
+                DataGridViewCell nextCell = dgvBcsv.Rows[i+1].Cells[0];
+
+            }*/
+
+            dgvBcsv.Sort(new RowCompare(SortOrder.Ascending));
+        }
+
+        private class RowCompare : System.Collections.IComparer
+        {
+            private static int sortOrderModifier = 1;
+            public RowCompare(SortOrder sortOrder)
+            {
+                switch (sortOrder)
+                {
+                    case SortOrder.Ascending:
+                        sortOrderModifier = 1;
+                        break;
+
+                    case SortOrder.Descending:
+                        sortOrderModifier = -1;
+                        break;
+                }
+            }
+
+            public int Compare(object x, object y)
+            {
+                DataGridViewRow curRow = (DataGridViewRow)x;
+                DataGridViewRow nextRow = (DataGridViewRow)y;
+
+                int CompareResult = System.String.CompareOrdinal(curRow.Cells[0].Value.ToString(),
+                                                          nextRow.Cells[0].Value.ToString());
+
+                return CompareResult * sortOrderModifier;
+            }
+        }
     }
 }

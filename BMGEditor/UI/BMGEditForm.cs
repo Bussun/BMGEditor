@@ -42,5 +42,16 @@ namespace BMGEditor
             Form txtEditForm = new TextEntryEditorForm(m_File.Entries[entriesListBox.SelectedIndex]);
             txtEditForm.Show();
         }
+
+        private void addEntryBtn_Click(object sender, EventArgs e)
+        {
+            Form newEntryForm = new NewEntryForm();
+            newEntryForm.Show();
+        }
+
+        private void deleteEntryBtn_Click(object sender, EventArgs e)
+        {
+            m_File.NukeFile();
+        }
     }
 }

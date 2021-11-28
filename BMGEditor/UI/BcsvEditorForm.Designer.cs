@@ -32,6 +32,7 @@
             this.tsToolbar = new System.Windows.Forms.ToolStrip();
             this.btnSave = new System.Windows.Forms.ToolStripButton();
             this.dgvBcsv = new System.Windows.Forms.DataGridView();
+            this.sortBtn = new System.Windows.Forms.ToolStripButton();
             this.tsToolbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBcsv)).BeginInit();
             this.SuspendLayout();
@@ -40,7 +41,8 @@
             // 
             this.tsToolbar.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.tsToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnSave});
+            this.btnSave,
+            this.sortBtn});
             this.tsToolbar.Location = new System.Drawing.Point(0, 0);
             this.tsToolbar.Name = "tsToolbar";
             this.tsToolbar.Size = new System.Drawing.Size(1039, 27);
@@ -72,6 +74,17 @@
             this.dgvBcsv.Size = new System.Drawing.Size(1039, 731);
             this.dgvBcsv.TabIndex = 1;
             // 
+            // sortBtn
+            // 
+            this.sortBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.sortBtn.Image = ((System.Drawing.Image)(resources.GetObject("sortBtn.Image")));
+            this.sortBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.sortBtn.Name = "sortBtn";
+            this.sortBtn.Size = new System.Drawing.Size(40, 24);
+            this.sortBtn.Text = "Sort";
+            this.sortBtn.ToolTipText = "Sort";
+            this.sortBtn.Click += new System.EventHandler(this.sortBtn_Click);
+            // 
             // BcsvEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -96,5 +109,6 @@
         private System.Windows.Forms.ToolStrip tsToolbar;
         private System.Windows.Forms.DataGridView dgvBcsv;
         private System.Windows.Forms.ToolStripButton btnSave;
+        private System.Windows.Forms.ToolStripButton sortBtn;
     }
 }
