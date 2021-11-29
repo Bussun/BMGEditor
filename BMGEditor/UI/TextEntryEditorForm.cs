@@ -18,6 +18,7 @@ namespace BMGEditor.UI
             InitializeComponent();
             m_Entry = txtEntry;
             richTextBox1.Text = m_Entry.text;
+            entryNameTxtBox.Text = m_Entry.entryName;
         }
 
         private void TextEntryEditorForm_FormClosing(object sender, FormClosingEventArgs e)
