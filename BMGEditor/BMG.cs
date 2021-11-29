@@ -1164,7 +1164,6 @@ namespace BMGEditor
                 Entries.Add(txtEntry);
                 m_File.Stream.Position += 0x01;
             }
-			Console.WriteLine(m_File.Stream.Position);
 
 			while (m_File.Reader.ReadByte() != 0x44)
 				m_File.Stream.Position += 0x01;
@@ -1174,7 +1173,6 @@ namespace BMGEditor
             DAT1sectionStart = m_File.Stream.Position;
             DAT1sectionMagic = m_File.Reader.ReadInt32();
             DAT1sectionSize = m_File.Reader.ReadUInt32();
-			Console.WriteLine(m_File.Stream.Position);
 
 			strPoolStart = m_File.Stream.Position;
             if (DAT1sectionMagic != DAT1magic) throw new Exception("BMG exists but isn\'t in the expected format");
@@ -1296,20 +1294,14 @@ namespace BMGEditor
 
         public void WriteToFile()
         {
-            //throw new NotImplementedException();
-            
-        }
-
-        public void NukeFile() //Makin' it to WriteToFile() soon !!
-        {
 			//File header
-            m_File.Stream.Position = 0;
-            m_File.Writer.Write((Int32)m_Signature);
-            m_File.Writer.Write((Int32)m_FileType);
-            m_File.Writer.Write((UInt32)0x00); //Final fileSize will be written at the end
-            m_File.Writer.Write((UInt32)0x04); //Number of sections, always 4 in Super Mario Galaxy, this editor isn't meant to be used on anything else anyway.
-            m_File.Writer.Write((Byte)0x02); //Encoding
-            while (m_File.Stream.Position != 0x20) m_File.Writer.Write((Byte)0x00); // The 15 bytes of nothing
+			m_File.Stream.Position = 0;
+			m_File.Writer.Write((Int32)m_Signature);
+			m_File.Writer.Write((Int32)m_FileType);
+			m_File.Writer.Write((UInt32)0x00); //Final fileSize will be written at the end
+			m_File.Writer.Write((UInt32)0x04); //Number of sections, always 4 in Super Mario Galaxy, this editor isn't meant to be used on anything else anyway.
+			m_File.Writer.Write((Byte)0x02); //Encoding
+			while (m_File.Stream.Position != 0x20) m_File.Writer.Write((Byte)0x00); // The 15 bytes of nothing
 
 			//INF1 section
 			Int64 INF1start = m_File.Stream.Position;
@@ -1319,7 +1311,7 @@ namespace BMGEditor
 			m_File.Writer.Write((UInt16)INF1itemLength);
 			m_File.Writer.Write((UInt32)0x00);
 			foreach (TextEntry entry in Entries)
-            {
+			{
 				m_File.Writer.Write((UInt32)0x00);
 				m_File.Writer.Write((Byte)entry.unk1);
 				m_File.Writer.Write((Byte)entry.cameraOpt);
@@ -1329,7 +1321,7 @@ namespace BMGEditor
 				m_File.Writer.Write((Byte)entry.messageLayoutOpt);
 				m_File.Writer.Write((Byte)entry.messageAreaOpt);
 				m_File.Writer.Write((Byte)0xFF);
-            }
+			}
 			while (m_File.Stream.Position % 16 != 0x00)
 				m_File.Writer.Write((Byte)0x00);
 
@@ -1340,7 +1332,7 @@ namespace BMGEditor
 			//String pool
 			List<Int64> strPos = new List<Int64>();
 			foreach (TextEntry entry in Entries)
-            {
+			{
 				strPos.Add(m_File.Stream.Position - (DAT1start + 0x08));
 				//Doing this because for some reason there's a random char appearing at the beggining of each str
 				if (entry.text == "") m_File.Writer.Write((UInt16)0x00);
@@ -1348,13 +1340,12 @@ namespace BMGEditor
 				{
 					List<char> strToWrite = new List<char>();
 					foreach (char c in entry.text)
-                    {
+					{
 						strToWrite.Add(c);
-                    }
-					Console.WriteLine(strToWrite);
+					}
 
-					for (int i = 0; i  < strToWrite.Count; i++)
-                    {
+					for (int i = 0; i < strToWrite.Count; i++)
+					{
 						if (strToWrite[i].Equals('*'))
 						{
 							EscapeSequence escSeq = new EscapeSequence();
@@ -1362,22 +1353,22 @@ namespace BMGEditor
 							escSeq.unk1 = Byte.Parse(String.Concat(strToWrite[i + 3], strToWrite[i + 4]), NumberStyles.HexNumber);
 							i += 0x05;
 							for (int j = 0; j < escSeq.length * 2 - 8; j += 2)
-                            {
-								escSeq.binValue.Add(Byte.Parse(String.Concat(strToWrite[i + j], strToWrite[i+j+1]), NumberStyles.HexNumber));
-                            }
+							{
+								escSeq.binValue.Add(Byte.Parse(String.Concat(strToWrite[i + j], strToWrite[i + j + 1]), NumberStyles.HexNumber));
+							}
 
 							List<Byte> seqToWrite = BytesFromEscapeSequence(escSeq);
 							foreach (Byte b in seqToWrite)
-                            {
+							{
 								m_File.Writer.Write(b);
-                            }
+							}
 							i += escSeq.length * 2 - 8;
 
 
 						}
 						else
 							m_File.Writer.Write(strToWrite[i]);
-                    }
+					}
 
 					m_File.Writer.Write((UInt16)0x00);
 
@@ -1395,16 +1386,16 @@ namespace BMGEditor
 			m_File.Stream.Position = INF1start;
 			m_File.Stream.Position += 0x10;
 			for (int index = 0; index < INF1itemNumber; index++)
-            {
+			{
 				m_File.Writer.Write((UInt32)strPos[index]);
 				m_File.Stream.Position += 0x08;
-            }
+			}
 			m_File.Stream.Position = DAT1end;
 
 			m_File.Writer.Write((Int32)FLW1magic);
 			m_File.Writer.Write((UInt32)FLW1sectionSize);
 			m_File.Writer.Write(FLW1sectionContent);
-			
+
 			m_File.Writer.Write((Int32)FLI1magic);
 			m_File.Writer.Write((UInt32)FLI1sectionSize);
 			m_File.Writer.Write(FLI1sectionContent);
@@ -1415,7 +1406,12 @@ namespace BMGEditor
 
 			m_File.Stream.SetLength(newFileSize);
 
-            m_File.Flush();
+			m_File.Flush();
+		}
+
+        public void NukeFile() //Yay, its code has been moved into WriteToFile()!!
+        {
+			
 
         }
 

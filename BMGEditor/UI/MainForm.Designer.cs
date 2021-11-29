@@ -37,7 +37,7 @@ namespace BMGEditor
             this.openTextEditorBtn = new System.Windows.Forms.Button();
             this.openBcsvEditorBtn = new System.Windows.Forms.Button();
             this.openARCFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.button1 = new System.Windows.Forms.Button();
+            this.aboutBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // openFileBtn
@@ -53,7 +53,7 @@ namespace BMGEditor
             // closeFileBtn
             // 
             this.closeFileBtn.Enabled = false;
-            this.closeFileBtn.Location = new System.Drawing.Point(220, 12);
+            this.closeFileBtn.Location = new System.Drawing.Point(112, 12);
             this.closeFileBtn.Name = "closeFileBtn";
             this.closeFileBtn.Size = new System.Drawing.Size(94, 29);
             this.closeFileBtn.TabIndex = 1;
@@ -64,7 +64,7 @@ namespace BMGEditor
             // openTextEditorBtn
             // 
             this.openTextEditorBtn.Enabled = false;
-            this.openTextEditorBtn.Location = new System.Drawing.Point(12, 60);
+            this.openTextEditorBtn.Location = new System.Drawing.Point(12, 112);
             this.openTextEditorBtn.Name = "openTextEditorBtn";
             this.openTextEditorBtn.Size = new System.Drawing.Size(94, 29);
             this.openTextEditorBtn.TabIndex = 2;
@@ -75,11 +75,11 @@ namespace BMGEditor
             // openBcsvEditorBtn
             // 
             this.openBcsvEditorBtn.Enabled = false;
-            this.openBcsvEditorBtn.Location = new System.Drawing.Point(220, 60);
+            this.openBcsvEditorBtn.Location = new System.Drawing.Point(112, 112);
             this.openBcsvEditorBtn.Name = "openBcsvEditorBtn";
-            this.openBcsvEditorBtn.Size = new System.Drawing.Size(94, 29);
+            this.openBcsvEditorBtn.Size = new System.Drawing.Size(313, 29);
             this.openBcsvEditorBtn.TabIndex = 3;
-            this.openBcsvEditorBtn.Text = "Entries editor";
+            this.openBcsvEditorBtn.Text = "BCSV Editor [DEBUG BUILD ONLY]";
             this.openBcsvEditorBtn.UseVisualStyleBackColor = true;
             this.openBcsvEditorBtn.Click += new System.EventHandler(this.openBcsvEditorBtn_Click);
             // 
@@ -88,27 +88,30 @@ namespace BMGEditor
             this.openARCFileDialog.FileName = "Message.arc";
             this.openARCFileDialog.Filter = "Nintendo archive files|*.arc";
             // 
-            // button1
+            // aboutBtn
             // 
-            this.button1.Location = new System.Drawing.Point(112, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 50);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.aboutBtn.Location = new System.Drawing.Point(323, 12);
+            this.aboutBtn.Name = "aboutBtn";
+            this.aboutBtn.Size = new System.Drawing.Size(102, 29);
+            this.aboutBtn.TabIndex = 4;
+            this.aboutBtn.Text = "About";
+            this.aboutBtn.UseVisualStyleBackColor = true;
+            this.aboutBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(326, 101);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(437, 153);
+            this.Controls.Add(this.aboutBtn);
             this.Controls.Add(this.openBcsvEditorBtn);
             this.Controls.Add(this.openTextEditorBtn);
             this.Controls.Add(this.closeFileBtn);
             this.Controls.Add(this.openFileBtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.ResumeLayout(false);
 
@@ -121,6 +124,6 @@ namespace BMGEditor
         private Button openTextEditorBtn;
         private Button openBcsvEditorBtn;
         private OpenFileDialog openARCFileDialog;
-        private Button button1;
+        private Button aboutBtn;
     }
 }

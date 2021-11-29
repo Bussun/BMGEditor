@@ -10,9 +10,9 @@ namespace BMGEditor
     public static class Variables
     {
         public const string softwareName = "Luma";
-        public const string softwareVersion = "v0.3";
+        public const string softwareVersion = "v0.4";
         public const bool isBeta = true;
-        public const bool isPrivateBeta = true;
+        public const bool isPrivateBeta = false;
     }
     internal static class Program
     {

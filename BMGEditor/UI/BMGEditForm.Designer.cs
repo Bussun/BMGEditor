@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BMGEditForm));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.saveBMGbtn = new System.Windows.Forms.ToolStripButton();
             this.openEntryBtn = new System.Windows.Forms.ToolStripButton();
             this.deleteEntryBtn = new System.Windows.Forms.ToolStripButton();
             this.addEntryBtn = new System.Windows.Forms.ToolStripButton();
@@ -41,6 +42,7 @@
             // 
             this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveBMGbtn,
             this.openEntryBtn,
             this.deleteEntryBtn,
             this.addEntryBtn});
@@ -49,6 +51,17 @@
             this.toolStrip.Size = new System.Drawing.Size(800, 27);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip";
+            // 
+            // saveBMGbtn
+            // 
+            this.saveBMGbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.saveBMGbtn.Image = ((System.Drawing.Image)(resources.GetObject("saveBMGbtn.Image")));
+            this.saveBMGbtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveBMGbtn.Name = "saveBMGbtn";
+            this.saveBMGbtn.Size = new System.Drawing.Size(44, 24);
+            this.saveBMGbtn.Text = "Save";
+            this.saveBMGbtn.ToolTipText = "Save";
+            this.saveBMGbtn.Click += new System.EventHandler(this.saveBMGbtn_Click);
             // 
             // openEntryBtn
             // 
@@ -82,12 +95,14 @@
             // 
             // entriesListBox
             // 
+            this.entriesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.entriesListBox.FormattingEnabled = true;
             this.entriesListBox.ItemHeight = 20;
-            this.entriesListBox.Location = new System.Drawing.Point(67, 125);
+            this.entriesListBox.Location = new System.Drawing.Point(0, 27);
             this.entriesListBox.Name = "entriesListBox";
-            this.entriesListBox.Size = new System.Drawing.Size(554, 284);
+            this.entriesListBox.Size = new System.Drawing.Size(800, 423);
             this.entriesListBox.TabIndex = 1;
+            this.entriesListBox.DoubleClick += new System.EventHandler(this.entriesListBox_DoubleClick);
             // 
             // BMGEditForm
             // 
@@ -113,5 +128,6 @@
         private System.Windows.Forms.ToolStripButton deleteEntryBtn;
         private System.Windows.Forms.ToolStripButton addEntryBtn;
         private System.Windows.Forms.ListBox entriesListBox;
+        private System.Windows.Forms.ToolStripButton saveBMGbtn;
     }
 }

@@ -26,6 +26,9 @@ namespace BMGEditor
             {
                 entriesListBox.Items.Add(txtEntry.entryName);
             }
+
+            addEntryBtn.Enabled = false;
+            deleteEntryBtn.Enabled = false;
         }
 
         private BMG m_File = null;
@@ -39,8 +42,8 @@ namespace BMGEditor
 
         private void openEntryBtn_Click(object sender, EventArgs e)
         {
-            Form txtEditForm = new TextEntryEditorForm(m_File.Entries[entriesListBox.SelectedIndex]);
-            txtEditForm.Show();
+            if (entriesListBox.SelectedIndex == -1) { }
+            else openEditor();
         }
 
         private void addEntryBtn_Click(object sender, EventArgs e)
@@ -51,7 +54,23 @@ namespace BMGEditor
 
         private void deleteEntryBtn_Click(object sender, EventArgs e)
         {
-            m_File.NukeFile();
+            throw new NotImplementedException();
+        }
+
+        private void openEditor()
+        {
+            Form txtEditForm = new TextEntryEditorForm(m_File.Entries[entriesListBox.SelectedIndex]);
+            txtEditForm.Show();
+        }
+
+        private void entriesListBox_DoubleClick(object sender, EventArgs e)
+        {
+            openEditor();
+        }
+
+        private void saveBMGbtn_Click(object sender, EventArgs e)
+        {
+            m_File.WriteToFile();
         }
     }
 }
