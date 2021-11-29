@@ -10,9 +10,9 @@ namespace BMGEditor
     public static class Variables
     {
         public const string softwareName = "Luma";
-        public const string softwareVersion = "v0.1";
+        public const string softwareVersion = "v0.3";
         public const bool isBeta = true;
-        public const bool isPrivateBeta = false;
+        public const bool isPrivateBeta = true;
     }
     internal static class Program
     {
@@ -32,8 +32,6 @@ namespace BMGEditor
             string str = "FF";
             Byte octet = Byte.Parse(str, NumberStyles.HexNumber);
             Console.WriteLine(octet);
-            //BitConverter.ToUInt16()
-            
         }
     }
 }

@@ -1296,6 +1296,7 @@ namespace BMGEditor
                     {
                         ret += String.Format("{0:X2}", m_File.Reader.ReadByte());
                     }
+					ret += " ";
                 }
                 else
                     ret += c;
@@ -1326,16 +1327,18 @@ namespace BMGEditor
             
         }
 
-        public void NukeFile()
+        public void NukeFile() //It's almost ready to be copied to WriteToFile() since it doesn't destroy the file anymore!
         {
+			//File header
             m_File.Stream.Position = 0;
             m_File.Writer.Write((Int32)m_Signature);
             m_File.Writer.Write((Int32)m_FileType);
-            m_File.Writer.Write((UInt32)0x00);
-            m_File.Writer.Write((UInt32)0x04);
-            m_File.Writer.Write((Byte)0x02);
-            while (m_File.Stream.Position != 0x20) m_File.Writer.Write((Byte)0x00);
+            m_File.Writer.Write((UInt32)0x00); //Final fileSize will be written at the end
+            m_File.Writer.Write((UInt32)0x04); //Number of sections, always 4 in Super Mario Galaxy, this editor isn't meant to be used on anything else anyway.
+            m_File.Writer.Write((Byte)0x02); //Encoding
+            while (m_File.Stream.Position != 0x20) m_File.Writer.Write((Byte)0x00); // The 15 bytes of nothing
 
+			//INF1 section
 			Int64 INF1start = m_File.Stream.Position;
 			m_File.Writer.Write((Int32)INF1magic);
 			m_File.Writer.Write((UInt32)(0x10 + (INF1itemNumber * INF1itemLength)));
@@ -1357,10 +1360,10 @@ namespace BMGEditor
 			while (m_File.Stream.Position % 16 != 0x00)
 				m_File.Writer.Write((Byte)0x00);
 
+			//DAT1
 			Int64 DAT1start = m_File.Stream.Position;
 			m_File.Writer.Write((Int32)DAT1magic);
 			m_File.Writer.Write((UInt32)0x00); //section size, will be defined later
-
 			//String pool
 			List<Int64> strPos = new List<Int64>();
 			foreach (TextEntry entry in Entries)
@@ -1421,11 +1424,6 @@ namespace BMGEditor
 									m_File.Writer.Write(b);
 								}
 								i += escSeq.length * 2 + 1;
-								/*Console.WriteLine(String.Format("{0:X2}", escSeq.length));
-								Console.WriteLine("strtowrite i " + strToWrite[i]);
-								Console.WriteLine("strtowrite i+1 " + strToWrite[i+1]);*/
-
-								//m_File.Writer.Write(strToWrite[i]);
                             }
 						}
 						else
