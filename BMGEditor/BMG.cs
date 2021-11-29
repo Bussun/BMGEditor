@@ -1239,6 +1239,7 @@ namespace BMGEditor
 			public UInt16 binValue3;
 			public UInt16 binValue4;
 			public UInt16 binValue5;
+			public List<Byte> bigBinValue;
         }
 
 		public List<Byte> BytesFromEscapeSequence(EscapeSequence escSeq)
@@ -1274,6 +1275,9 @@ namespace BMGEditor
 					foreach (byte by in binVal4caseE) ret.Add(by);
 					byte[] binVal5caseE = BitConverter.GetBytes(escSeq.binValue5);
 					foreach (byte by in binVal5caseE) ret.Add(by);
+					break;
+
+				case 0x36: //TODO: Implement this
 					break;
             }
 			return ret;
@@ -1413,8 +1417,12 @@ namespace BMGEditor
 										escSeq.binValue5 = UInt16.Parse(String.Concat(strToWrite[i + 21], strToWrite[i + 22], strToWrite[i + 23], strToWrite[i + 24]), NumberStyles.HexNumber);
 										break;
 
+									case 0x36:
+										//escSeq.bigBinValue = 
+										break;
+
 									default:
-										System.Windows.Forms.MessageBox.Show("Error, please report this issue to Bussun#0586 on Discord. What went wrong: Unknown escape sequence");
+										System.Windows.Forms.MessageBox.Show($"Error, please report this issue to Bussun#0586 on Discord. What went wrong: Unknown escape sequence\nMessage name: {entry.entryName} {entry.entryNo}");
 										break;
 	                            }
 
@@ -1423,7 +1431,7 @@ namespace BMGEditor
 								{
 									m_File.Writer.Write(b);
 								}
-								i += escSeq.length * 2 + 1;
+								i += escSeq.length * 2 - 3; 
                             }
 						}
 						else
