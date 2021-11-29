@@ -55,7 +55,7 @@ namespace BMGEditor
                     return;
                 }
 
-                openBcsvEditorBtn.Enabled = true;
+                //openBcsvEditorBtn.Enabled = true;
                 openTextEditorBtn.Enabled = true;
                 closeFileBtn.Enabled = true;
                 arcOpen = true;

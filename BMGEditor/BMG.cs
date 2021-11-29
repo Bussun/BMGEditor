@@ -1234,12 +1234,7 @@ namespace BMGEditor
         {
 			public byte length;
 			public byte unk1;
-			public UInt16 binValue1;
-			public UInt16 binValue2;
-			public UInt16 binValue3;
-			public UInt16 binValue4;
-			public UInt16 binValue5;
-			public List<Byte> bigBinValue;
+			public List<Byte> binValue = new List<Byte>();
         }
 
 		public List<Byte> BytesFromEscapeSequence(EscapeSequence escSeq)
@@ -1250,35 +1245,9 @@ namespace BMGEditor
 			ret.Add(escSeq.length);
 			ret.Add(escSeq.unk1);
 
-			switch (escSeq.length)
+			foreach (Byte b in escSeq.binValue)
             {
-				case 0x06:
-					byte[] binVal1case6 = BitConverter.GetBytes(escSeq.binValue1);
-					foreach (byte by in binVal1case6) ret.Add(by);
-					break;
-
-				case 0x08:
-					byte[] binVal1case8 = BitConverter.GetBytes(escSeq.binValue1);
-					foreach (byte by in binVal1case8) ret.Add(by);
-					byte[] binVal2case8 = BitConverter.GetBytes(escSeq.binValue2);
-					foreach (byte by in binVal2case8) ret.Add(by);
-					break;
-
-				case 0x0E:
-					byte[] binVal1caseE = BitConverter.GetBytes(escSeq.binValue1);
-					foreach (byte by in binVal1caseE) ret.Add(by);
-					byte[] binVal2caseE = BitConverter.GetBytes(escSeq.binValue2);
-					foreach (byte by in binVal2caseE) ret.Add(by);
-					byte[] binVal3caseE = BitConverter.GetBytes(escSeq.binValue3);
-					foreach (byte by in binVal3caseE) ret.Add(by);
-					byte[] binVal4caseE = BitConverter.GetBytes(escSeq.binValue4);
-					foreach (byte by in binVal4caseE) ret.Add(by);
-					byte[] binVal5caseE = BitConverter.GetBytes(escSeq.binValue5);
-					foreach (byte by in binVal5caseE) ret.Add(by);
-					break;
-
-				case 0x36: //TODO: Implement this
-					break;
+				ret.Add(b);
             }
 			return ret;
         }
@@ -1331,7 +1300,7 @@ namespace BMGEditor
             
         }
 
-        public void NukeFile() //It's almost ready to be copied to WriteToFile() since it doesn't destroy the file anymore!
+        public void NukeFile() //Makin' it to WriteToFile() soon !!
         {
 			//File header
             m_File.Stream.Position = 0;
@@ -1388,7 +1357,23 @@ namespace BMGEditor
                     {
 						if (strToWrite[i].Equals('*'))
 						{
-							//TODO: Rewrite escape sequence parser
+							EscapeSequence escSeq = new EscapeSequence();
+							escSeq.length = Byte.Parse(String.Concat(strToWrite[i + 1], strToWrite[i + 2]), NumberStyles.HexNumber);
+							escSeq.unk1 = Byte.Parse(String.Concat(strToWrite[i + 3], strToWrite[i + 4]), NumberStyles.HexNumber);
+							i += 0x05;
+							for (int j = 0; j < escSeq.length * 2 - 8; j += 2)
+                            {
+								escSeq.binValue.Add(Byte.Parse(String.Concat(strToWrite[i + j], strToWrite[i+j+1]), NumberStyles.HexNumber));
+                            }
+
+							List<Byte> seqToWrite = BytesFromEscapeSequence(escSeq);
+							foreach (Byte b in seqToWrite)
+                            {
+								m_File.Writer.Write(b);
+                            }
+							i += escSeq.length * 2 - 8;
+
+
 						}
 						else
 							m_File.Writer.Write(strToWrite[i]);
