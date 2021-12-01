@@ -6,6 +6,7 @@ using System.Text;
 using System.Globalization;
 using System.Net.Http;
 using System.IO;
+using System.Threading;
 
 namespace BMGEditor
 {
@@ -24,12 +25,13 @@ namespace BMGEditor
         {
             ApplicationConfiguration.Initialize();
             Bcsv.PopulateHashtable();
-            if (Variables.isBeta && Variables.isPrivateBeta) MessageBox.Show("This is a private beta, please don\'t leak it.", "Private", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (Variables.isBeta && Variables.isPrivateBeta) 
+                MessageBox.Show("This is a private beta, please don\'t leak it.", "Private", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             Application.Run(new MainForm());
         }
 
         static readonly HttpClient wrClient = new HttpClient();
-        static async void CheckUpdates()
+        public static async void CheckUpdates()
         {
             const string verCheckURL = "https://bussun.github.io/res/checks/luma/upre1";
             Stream wrAnswer;

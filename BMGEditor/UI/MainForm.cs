@@ -86,5 +86,10 @@ namespace BMGEditor
         {
             MessageBox.Show("BMG Editor by Bussun", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void updateCheckBtn_Click(object sender, EventArgs e)
+        {
+            Program.CheckUpdates();
+        }
     }
 }

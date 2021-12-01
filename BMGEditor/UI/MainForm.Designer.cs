@@ -38,6 +38,7 @@ namespace BMGEditor
             this.openBcsvEditorBtn = new System.Windows.Forms.Button();
             this.openARCFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.aboutBtn = new System.Windows.Forms.Button();
+            this.updateCheckBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // openFileBtn
@@ -98,11 +99,22 @@ namespace BMGEditor
             this.aboutBtn.UseVisualStyleBackColor = true;
             this.aboutBtn.Click += new System.EventHandler(this.button1_Click);
             // 
+            // updateCheckBtn
+            // 
+            this.updateCheckBtn.Location = new System.Drawing.Point(282, 47);
+            this.updateCheckBtn.Name = "updateCheckBtn";
+            this.updateCheckBtn.Size = new System.Drawing.Size(143, 29);
+            this.updateCheckBtn.TabIndex = 5;
+            this.updateCheckBtn.Text = "Check for updates";
+            this.updateCheckBtn.UseVisualStyleBackColor = true;
+            this.updateCheckBtn.Click += new System.EventHandler(this.updateCheckBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 153);
+            this.Controls.Add(this.updateCheckBtn);
             this.Controls.Add(this.aboutBtn);
             this.Controls.Add(this.openBcsvEditorBtn);
             this.Controls.Add(this.openTextEditorBtn);
@@ -125,5 +137,6 @@ namespace BMGEditor
         private Button openBcsvEditorBtn;
         private OpenFileDialog openARCFileDialog;
         private Button aboutBtn;
+        private Button updateCheckBtn;
     }
 }

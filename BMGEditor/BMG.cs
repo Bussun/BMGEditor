@@ -41,13 +41,13 @@ namespace BMGEditor
         private Int64 FLW1sectionStart;
         private Int32 FLW1sectionMagic;
         private UInt32 FLW1sectionSize;
-        private List<Byte> FLW1sectionContent;
+        private List<Byte> FLW1sectionContent = new List<byte>();
 
         //FLI1
         private Int64 FLI1sectionStart;
         private Int32 FLI1sectionMagic;
         private UInt32 FLI1sectionSize;
-        private List<Byte> FLI1sectionContent;
+        private List<Byte> FLI1sectionContent = new List<byte>();
 
         public BMG(FileBase file, Bcsv tbl)
         {
@@ -129,6 +129,10 @@ namespace BMGEditor
             FLW1sectionMagic = m_File.Reader.ReadInt32();
             if (FLW1sectionMagic != FLW1magic) throw new Exception("FLW1 section missing. Check your BMG file");
             FLW1sectionSize = m_File.Reader.ReadUInt32();
+            for (int i = 0; i < FLW1sectionSize - 0x08; i++)
+            {
+                FLW1sectionContent.Add(m_File.Reader.ReadByte());
+            }
 
 
             //FLI1
@@ -137,6 +141,19 @@ namespace BMGEditor
             FLI1sectionMagic = m_File.Reader.ReadInt32();
             if (FLI1sectionMagic != FLI1magic) throw new Exception("FLI1 section missing. Check your BMG file");
             FLI1sectionSize = m_File.Reader.ReadUInt32();
+            for (int i = 0; i < FLI1sectionSize - 0x08; i++)
+            {
+                FLI1sectionContent.Add(m_File.Reader.ReadByte());
+                /*For some reason Nintendo decided to set this section's size 0x10 bytes more than 
+                 *it really is (aligned size vs real size), so checking if we are at the end of the
+                 *stream to avoid a EndOfStreamException and changing the section size if incorrect
+                 *since the game (thanks god) doesn't care about that */
+                if (m_File.Stream.Length - m_File.Stream.Position == 0) 
+                {
+                    FLI1sectionSize = (UInt32)(m_File.Stream.Position - FLI1sectionStart);
+                    break;
+                }
+            }
         }
 
         public void Close()
@@ -219,6 +236,7 @@ namespace BMGEditor
             Entries.Add(newEntry);
         }
 
+        [Obsolete]
         public void DeleteEntry(Int32 entryIndex) //Problem: if custom entries, alphabetical index != in-game/tbl index
         {
             Entries.Remove(Entries[entryIndex]);
@@ -327,11 +345,13 @@ namespace BMGEditor
 
             m_File.Writer.Write((Int32)FLW1magic);
             m_File.Writer.Write((UInt32)FLW1sectionSize);
-            //m_File.Writer.Write(FLW1sectionContent);
+            foreach (byte b in FLW1sectionContent)
+                m_File.Writer.Write(b);
 
             m_File.Writer.Write((Int32)FLI1magic);
             m_File.Writer.Write((UInt32)FLI1sectionSize);
-            //m_File.Writer.Write(FLI1sectionContent);
+            foreach (byte b in FLI1sectionContent)
+                m_File.Writer.Write(b);
 
             Int64 newFileSize = m_File.Stream.Position;
             m_File.Stream.Position = 0x08;
@@ -340,12 +360,6 @@ namespace BMGEditor
             m_File.Stream.SetLength(newFileSize);
 
             m_File.Flush();
-        }
-
-        public void NukeFile() //Yay, its code has been moved into WriteToFile()!!
-        {
-            
-
         }
 
         public List<TextEntry> Entries;
