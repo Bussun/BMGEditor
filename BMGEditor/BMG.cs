@@ -118,7 +118,7 @@ namespace BMGEditor
 
             m_File_Tbl.Entries.Sort((x, y) =>
             {
-                int a = (int)x[70793394], b = (int)y[70793394];
+                UInt32 a = (UInt32)x[70793394], b = (UInt32)y[70793394];
                 return a.CompareTo(b);
             });
             int l = 0;
