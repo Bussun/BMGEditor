@@ -27,7 +27,7 @@ namespace BMGEditor
                 entriesListBox.Items.Add(txtEntry.entryName);
             }
 
-            addEntryBtn.Enabled = false;
+            //addEntryBtn.Enabled = false;
             deleteEntryBtn.Enabled = false;
         }
 
@@ -48,8 +48,15 @@ namespace BMGEditor
 
         private void addEntryBtn_Click(object sender, EventArgs e)
         {
-            Form newEntryForm = new NewEntryForm();
+            Form newEntryForm = new NewEntryForm(m_File);
             newEntryForm.Show();
+
+            entriesListBox.Items.Clear();
+            foreach (BMG.TextEntry txtEntry in m_File.Entries)
+            {
+                entriesListBox.Items.Add(txtEntry.entryName);
+            }
+
         }
 
         private void deleteEntryBtn_Click(object sender, EventArgs e)

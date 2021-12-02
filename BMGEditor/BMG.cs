@@ -238,8 +238,23 @@ namespace BMGEditor
             TextEntry newEntry = new TextEntry();
             newEntry.entryName = newEntryName;
             newEntry.entryNo = INF1itemNumber;
+            newEntry.text = "";
+            newEntry.unk1 = 0x00; newEntry.cameraOpt = 0x00; newEntry.sndEffectOpt = 0x00;
+            newEntry.unk2 = 0x00; newEntry.messageTriggerOpt = 0x00; newEntry.messageLayoutOpt = 0x00;
+            newEntry.messageAreaOpt = 0xFF;
             INF1itemNumber++;
             Entries.Add(newEntry);
+
+           /* Entries.Sort((x, y) =>
+            {
+                string entryNameA = x.entryName, entryNameB = y.entryName;
+                return String.CompareOrdinal(entryNameA, entryNameB);
+            });
+
+            for (int i = 0; i < INF1itemNumber; i++)
+            {
+                Entries[i].entryNo = i;
+            }*/
         }
 
         [Obsolete]
@@ -263,7 +278,7 @@ namespace BMGEditor
             //INF1 section
             Int64 INF1start = m_File.Stream.Position;
             m_File.Writer.Write((Int32)INF1magic);
-            m_File.Writer.Write((UInt32)(0x10 + (INF1itemNumber * INF1itemLength)));
+            m_File.Writer.Write((UInt32)(0x00)); //Section size
             m_File.Writer.Write((UInt16)INF1itemNumber);
             m_File.Writer.Write((UInt16)INF1itemLength);
             m_File.Writer.Write((UInt32)0x00);
@@ -281,6 +296,10 @@ namespace BMGEditor
             }
             while (m_File.Stream.Position % 16 != 0x00)
                 m_File.Writer.Write((Byte)0x00);
+            Int64 INF1end = m_File.Stream.Position;
+            m_File.Stream.Position = INF1start + 0x04;
+            m_File.Writer.Write((UInt32)(INF1end - INF1start));
+
 
             //DAT1
             Int64 DAT1start = m_File.Stream.Position;
@@ -333,7 +352,7 @@ namespace BMGEditor
             }
 
             while (m_File.Stream.Position % 16 != 0x00)
-                m_File.Stream.Position += 0x01;
+                m_File.Writer.Write((Byte)0x00);
             Int64 DAT1size = m_File.Stream.Position - DAT1start;
             Int64 DAT1end = m_File.Stream.Position;
             m_File.Stream.Position = DAT1start + 0x04;
