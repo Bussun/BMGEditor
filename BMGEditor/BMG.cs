@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -115,6 +116,11 @@ namespace BMGEditor
                 Entries[j].text = ReadWideCharString();
             }
 
+            m_File_Tbl.Entries.Sort((x, y) =>
+            {
+                int a = (int)x[70793394], b = (int)y[70793394];
+                return a.CompareTo(b);
+            });
             int l = 0;
             foreach (Bcsv.Entry bcsvEntry in m_File_Tbl.Entries)
             {

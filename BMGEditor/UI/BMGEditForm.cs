@@ -70,6 +70,13 @@ namespace BMGEditor
 
         private void saveBMGbtn_Click(object sender, EventArgs e)
         {
+            m_File.Entries.Sort((x, y) =>
+            {
+                string entryNameA = x.entryName, entryNameB = y.entryName;
+                return String.CompareOrdinal(entryNameA, entryNameB);
+            });
+
+            //m_FileTbl
             m_File.WriteToFile();
         }
     }
