@@ -170,9 +170,9 @@ namespace BMGEditor
         public class TextEntry
         {
             public int entryNo;
-            public string text;
+            public string text = "";
             public UInt32 offset;
-            public string entryName;
+            public string entryName = "";
 
             //Properties
             public byte unk1;

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BMGEditor.UI
@@ -16,8 +9,7 @@ namespace BMGEditor.UI
         public NewEntryForm(BMG file)
         {
             InitializeComponent();
-            Text = $"New Entry - {Variables.softwareName} {Variables.softwareVersion}";
-            if (Variables.isBeta) Text += " [BETA]";
+            Text = "New Entry";
             m_File = file;
         }
 
