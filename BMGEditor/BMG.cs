@@ -299,6 +299,8 @@ namespace BMGEditor
             Int64 INF1end = m_File.Stream.Position;
             m_File.Stream.Position = INF1start + 0x04;
             m_File.Writer.Write((UInt32)(INF1end - INF1start));
+            m_File.Stream.Position = INF1end;
+
 
 
             //DAT1
