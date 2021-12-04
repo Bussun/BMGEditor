@@ -1,4 +1,4 @@
-﻿namespace BMGEditor.UI
+﻿namespace BMGEditor
 {
     partial class TextEntryEditorForm
     {

@@ -25,6 +25,7 @@ namespace BMGEditor
         {
             ApplicationConfiguration.Initialize();
             Bcsv.PopulateHashtable();
+            CheckUpdates();
             Application.Run(new MainForm());
         }
 

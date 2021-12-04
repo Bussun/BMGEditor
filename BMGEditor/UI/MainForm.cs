@@ -54,13 +54,7 @@ namespace BMGEditor
                     arc.Close();
                     return;
                 }
-
-                #if DEBUG
-                    openBcsvEditorBtn.Enabled = true;
-                #else
-                #endif
                 openTextEditorBtn.Enabled = true;
-                closeFileBtn.Enabled = true;
                 arcOpen = true;
             }
             else
@@ -71,9 +65,7 @@ namespace BMGEditor
         {
             arc.Close();
             arcOpen = false;
-            openBcsvEditorBtn.Enabled = false;
             openTextEditorBtn.Enabled = false;
-            closeFileBtn.Enabled = false;
         }
 
         private void openTextEditorBtn_Click(object sender, EventArgs e)
@@ -87,9 +79,10 @@ namespace BMGEditor
             MessageBox.Show("BMG Editor by Bussun", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void updateCheckBtn_Click(object sender, EventArgs e)
+        private void openTextEditorEmptyBtn_Click(object sender, EventArgs e)
         {
-            Program.CheckUpdates();
+            Form bmgEdit = new BMGEditForm();
+            bmgEdit.Show();
         }
     }
 }
