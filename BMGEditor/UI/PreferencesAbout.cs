@@ -15,6 +15,19 @@ namespace BMGEditor
         public PreferencesAbout()
         {
             InitializeComponent();
+            Text = "About this software";
+            label3.Text = $"Version: {Variables.softwareVersion}";
+            label4.Text = $"Build number: {Variables.softwareInternalVersion}";
+        }
+
+        private void closeFormBtn_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
+
+        private void checkUpdateBtn_Click(object sender, EventArgs e)
+        {
+            Program.CheckUpdates();
         }
     }
 }

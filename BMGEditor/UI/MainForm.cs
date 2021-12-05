@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BMGEditor
@@ -76,7 +69,8 @@ namespace BMGEditor
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("BMG Editor by Bussun", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Form aboutForm = new PreferencesAbout();
+            aboutForm.Show();
         }
 
         private void openTextEditorEmptyBtn_Click(object sender, EventArgs e)

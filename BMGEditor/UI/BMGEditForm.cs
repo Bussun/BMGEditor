@@ -11,6 +11,7 @@ namespace BMGEditor
         private Bcsv m_BCSV = null;
         private bool arcOpen = false;
 
+        [Obsolete]
         public BMGEditForm(RarcFilesystem m_ARC)
         {
             InitializeComponent();

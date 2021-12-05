@@ -92,7 +92,7 @@
             // 
             this.openSettingsBtn.Name = "openSettingsBtn";
             this.openSettingsBtn.Size = new System.Drawing.Size(180, 22);
-            this.openSettingsBtn.Text = "Preferences";
+            this.openSettingsBtn.Text = "About";
             this.openSettingsBtn.Click += new System.EventHandler(this.openSettingsBtn_Click);
             // 
             // quitBtn

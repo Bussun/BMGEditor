@@ -1,20 +1,15 @@
 using System;
-using System.Linq;
-using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Text;
-using System.Globalization;
 using System.Net.Http;
 using System.IO;
-using System.Threading;
 
 namespace BMGEditor
 {
     public static class Variables
     {
         public const string softwareName = "Luma";
-        public const string softwareVersion = "v0.6";
-        public const UInt64 softwareInternalVersion = 60;
+        public const string softwareVersion = "v0.7";
+        public const UInt64 softwareInternalVersion = 70;
         public const UInt64 build = 1; //Getting ready for 1.0
         public const bool isBeta = true;
     }
