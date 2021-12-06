@@ -8,8 +8,8 @@ namespace BMGEditor
     public static class Variables
     {
         public const string softwareName = "Luma";
-        public const string softwareVersion = "v0.7";
-        public const UInt64 softwareInternalVersion = 70;
+        public const string softwareVersion = "v0.7.1";
+        public const UInt64 softwareInternalVersion = 71;
         public const UInt64 build = 1; //Getting ready for 1.0
         public const bool isBeta = true;
     }
