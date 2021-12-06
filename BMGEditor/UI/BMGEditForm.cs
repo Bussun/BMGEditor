@@ -1,4 +1,5 @@
 ﻿using BMGEditor.UI;
+using System.IO;
 using System;
 using System.Windows.Forms;
 
@@ -93,6 +94,7 @@ namespace BMGEditor
             if (openARCDialog.ShowDialog() == DialogResult.OK)
             {
                 fileName = openARCDialog.FileName;
+                File.Copy(fileName, fileName + ".backup", true);
                 m_ARC = new RarcFilesystem(new ExternalFile(fileName, false));
                 if (m_ARC.FileExists($"{m_ARC.rootName}/message.bmg") && m_ARC.FileExists($"{m_ARC.rootName}/messageid.tbl"))
                 {
