@@ -39,6 +39,7 @@
             this.openEntryBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.newEntryBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.openBCSVBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFlowEditorBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteEntryBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.entriesListBox = new System.Windows.Forms.ListBox();
             this.openARCDialog = new System.Windows.Forms.OpenFileDialog();
@@ -76,7 +77,7 @@
             // 
             this.openArcFileBtn.Name = "openArcFileBtn";
             this.openArcFileBtn.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openArcFileBtn.Size = new System.Drawing.Size(180, 22);
+            this.openArcFileBtn.Size = new System.Drawing.Size(146, 22);
             this.openArcFileBtn.Text = "Open";
             this.openArcFileBtn.Click += new System.EventHandler(this.openArcFileBtn_Click);
             // 
@@ -84,14 +85,14 @@
             // 
             this.saveFileBtn.Name = "saveFileBtn";
             this.saveFileBtn.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveFileBtn.Size = new System.Drawing.Size(180, 22);
+            this.saveFileBtn.Size = new System.Drawing.Size(146, 22);
             this.saveFileBtn.Text = "Save";
             this.saveFileBtn.Click += new System.EventHandler(this.saveBMGbtn_Click);
             // 
             // openSettingsBtn
             // 
             this.openSettingsBtn.Name = "openSettingsBtn";
-            this.openSettingsBtn.Size = new System.Drawing.Size(180, 22);
+            this.openSettingsBtn.Size = new System.Drawing.Size(146, 22);
             this.openSettingsBtn.Text = "About";
             this.openSettingsBtn.Click += new System.EventHandler(this.openSettingsBtn_Click);
             // 
@@ -99,7 +100,7 @@
             // 
             this.quitBtn.Name = "quitBtn";
             this.quitBtn.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.quitBtn.Size = new System.Drawing.Size(180, 22);
+            this.quitBtn.Size = new System.Drawing.Size(146, 22);
             this.quitBtn.Text = "Quit";
             this.quitBtn.Click += new System.EventHandler(this.quitBtn_Click);
             // 
@@ -110,6 +111,7 @@
             this.openEntryBtn,
             this.newEntryBtn,
             this.openBCSVBtn,
+            this.openFlowEditorBtn,
             this.deleteEntryBtn});
             this.editBtn.Image = ((System.Drawing.Image)(resources.GetObject("editBtn.Image")));
             this.editBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -141,6 +143,13 @@
             this.openBCSVBtn.Size = new System.Drawing.Size(238, 22);
             this.openBCSVBtn.Text = "Open BCSV [DEBUG ONLY]";
             this.openBCSVBtn.Click += new System.EventHandler(this.openBCSVBtn_Click);
+            // 
+            // openFlowEditorBtn
+            // 
+            this.openFlowEditorBtn.Enabled = false;
+            this.openFlowEditorBtn.Name = "openFlowEditorBtn";
+            this.openFlowEditorBtn.Size = new System.Drawing.Size(238, 22);
+            this.openFlowEditorBtn.Text = "Open flow editor";
             // 
             // deleteEntryBtn
             // 
@@ -175,8 +184,10 @@
             this.ClientSize = new System.Drawing.Size(700, 338);
             this.Controls.Add(this.entriesListBox);
             this.Controls.Add(this.toolStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "BMGEditForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BMGEditForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BMGEditForm_FormClosing);
             this.toolStrip.ResumeLayout(false);
@@ -201,5 +212,6 @@
         private System.Windows.Forms.ToolStripMenuItem openSettingsBtn;
         private System.Windows.Forms.ToolStripMenuItem openBCSVBtn;
         private System.Windows.Forms.OpenFileDialog openARCDialog;
+        private System.Windows.Forms.ToolStripMenuItem openFlowEditorBtn;
     }
 }

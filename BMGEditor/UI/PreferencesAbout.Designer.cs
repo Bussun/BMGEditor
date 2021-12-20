@@ -121,7 +121,7 @@
             this.Name = "PreferencesAbout";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PreferencesAbout";
             this.ResumeLayout(false);
             this.PerformLayout();

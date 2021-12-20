@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewEntryForm));
             this.createEntryBtn = new System.Windows.Forms.Button();
             this.newEntryNameTxtBox = new System.Windows.Forms.TextBox();
             this.groupBox = new System.Windows.Forms.GroupBox();
@@ -37,9 +38,10 @@
             // 
             // createEntryBtn
             // 
-            this.createEntryBtn.Location = new System.Drawing.Point(193, 56);
+            this.createEntryBtn.Location = new System.Drawing.Point(169, 42);
+            this.createEntryBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.createEntryBtn.Name = "createEntryBtn";
-            this.createEntryBtn.Size = new System.Drawing.Size(94, 29);
+            this.createEntryBtn.Size = new System.Drawing.Size(82, 22);
             this.createEntryBtn.TabIndex = 0;
             this.createEntryBtn.Text = "Create";
             this.createEntryBtn.UseVisualStyleBackColor = true;
@@ -47,26 +49,30 @@
             // 
             // newEntryNameTxtBox
             // 
-            this.newEntryNameTxtBox.Location = new System.Drawing.Point(6, 26);
+            this.newEntryNameTxtBox.Location = new System.Drawing.Point(5, 20);
+            this.newEntryNameTxtBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.newEntryNameTxtBox.Name = "newEntryNameTxtBox";
-            this.newEntryNameTxtBox.Size = new System.Drawing.Size(125, 27);
+            this.newEntryNameTxtBox.Size = new System.Drawing.Size(110, 23);
             this.newEntryNameTxtBox.TabIndex = 1;
             // 
             // groupBox
             // 
             this.groupBox.Controls.Add(this.newEntryNameTxtBox);
-            this.groupBox.Location = new System.Drawing.Point(12, 12);
+            this.groupBox.Location = new System.Drawing.Point(10, 9);
+            this.groupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(168, 74);
+            this.groupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox.Size = new System.Drawing.Size(147, 56);
             this.groupBox.TabIndex = 2;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Entry name";
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(193, 21);
+            this.cancelBtn.Location = new System.Drawing.Point(169, 16);
+            this.cancelBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(94, 29);
+            this.cancelBtn.Size = new System.Drawing.Size(82, 22);
             this.cancelBtn.TabIndex = 3;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
@@ -74,12 +80,14 @@
             // 
             // NewEntryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 111);
+            this.ClientSize = new System.Drawing.Size(262, 83);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.createEntryBtn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "NewEntryForm";
             this.Text = "NewEntryForm";
             this.groupBox.ResumeLayout(false);

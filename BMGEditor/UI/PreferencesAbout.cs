@@ -17,7 +17,7 @@ namespace BMGEditor
             InitializeComponent();
             Text = "About this software";
             label3.Text = $"Version: {Variables.softwareVersion}";
-            label4.Text = $"Build number: {Variables.softwareInternalVersion}";
+            label4.Text = $"Build number: {Variables.build}";
         }
 
         private void closeFormBtn_Click(object sender, EventArgs e)

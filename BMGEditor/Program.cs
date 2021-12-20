@@ -8,10 +8,9 @@ namespace BMGEditor
     public static class Variables
     {
         public const string softwareName = "Luma";
-        public const string softwareVersion = "v0.7.1";
-        public const UInt64 softwareInternalVersion = 71;
-        public const UInt64 build = 1; //Getting ready for 1.0
-        public const bool isBeta = true;
+        public const string softwareVersion = "v1.0";
+        public const UInt64 build = 1;
+        public const bool isBeta = false;
     }
     internal static class Program
     {
@@ -20,19 +19,18 @@ namespace BMGEditor
         {
             ApplicationConfiguration.Initialize();
             Bcsv.PopulateHashtable();
-            CheckUpdates();
-            Application.Run(new MainForm());
+            Application.Run(new BMGEditForm());
         }
 
         static readonly HttpClient wrClient = new HttpClient();
         public static async void CheckUpdates()
         {
-            const string verCheckURL = "https://bussun.github.io/res/checks/luma/upre1";
-            /*if (Variables.isBeta)
-             *  const string verCheckURL = "https://bussun.github.io/res/checks/luma/ub";
-             *else
-             *  const string verCheckURL = "https://bussun.github.io/res/chacks/luma/u";
-             */ //Getting ready for 1.0 
+            string verCheckURL;
+            if (Variables.isBeta)
+              verCheckURL = "https://bussun.github.io/res/checks/luma/ub";
+            else
+              verCheckURL = "https://bussun.github.io/res/checks/luma/u";
+
             Stream wrAnswer;
 
             try
@@ -45,22 +43,12 @@ namespace BMGEditor
                 {
                     UInt64 wrAnswerVersion = UInt64.Parse(wrAnswerContent);
 
-                    if (wrAnswerVersion == 100)
-                        MessageBox.Show("The 1.0 release is available !!", "1.0 Available, upgrade now !");
-                    else if (wrAnswerVersion > Variables.softwareInternalVersion)
-                        MessageBox.Show("New version available", "Update available", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    else if (wrAnswerVersion == Variables.softwareInternalVersion)
-                        MessageBox.Show("Luma is up to date.", "No update available", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    else
-                        MessageBox.Show("Woah, you got a developpement version !", "The most up to date ever (for now)", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    /* if (wrAnswerVersion > Variables.build)
+                    if (wrAnswerVersion > Variables.build)
                         MessageBox.Show("New version available", "Update available", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else if (wrAnswerVersion == Variables.build)
                         MessageBox.Show("Luma is up to date.", "No update available", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                         MessageBox.Show("Woah, you got a developpement version !", "The most up to date ever (for now)", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    */ //Getting ready for 1.0
                 }
                 else
                 {
