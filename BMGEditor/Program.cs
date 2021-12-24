@@ -8,10 +8,15 @@ namespace BMGEditor
     public static class Variables
     {
         public const string softwareName = "Luma";
-        public const string softwareVersion = "v1.0";
-        public const UInt64 build = 1;
-        public const bool isBeta = false;
-        public const bool isBE = true;
+        public const string softwareVersion = "v1.1";
+        public const UInt64 build = 2;
+        public const bool isBeta = true;
+    }
+
+    public static class Tests
+    {
+        //Not a good place to put this I know but I'm trying to figure it out
+        public static bool isBE = true;
     }
     internal static class Program
     {

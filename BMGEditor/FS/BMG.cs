@@ -245,6 +245,8 @@ namespace BMGEditor
             INF1itemNumber++;
             Entries.Add(newEntry);
 
+            //Code to sort entries by alphabetical order and then reassign an ID
+            //Works perfectly but is unused right now because it breaks flows
            /* Entries.Sort((x, y) =>
             {
                 string entryNameA = x.entryName, entryNameB = y.entryName;
@@ -272,8 +274,8 @@ namespace BMGEditor
             m_File.Writer.Write((Int32)m_FileType);
             m_File.Writer.Write((UInt32)0x00); //Final fileSize will be written at the end
             m_File.Writer.Write((UInt32)0x04); //Number of sections, always 4 in Super Mario Galaxy, this editor isn't meant to be used on anything else anyway.
-            m_File.Writer.Write((Byte)0x02); //Encoding
-            while (m_File.Stream.Position != 0x20) m_File.Writer.Write((Byte)0x00); // The 15 bytes of nothing
+            m_File.Writer.Write((Byte)0x02); //Encoding: UTF-16
+            while (m_File.Stream.Position != 0x20) m_File.Writer.Write((Byte)0x00); // The 15 bytes of nothing/padding
 
             //INF1 section
             Int64 INF1start = m_File.Stream.Position;

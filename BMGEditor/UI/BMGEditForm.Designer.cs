@@ -43,6 +43,7 @@
             this.deleteEntryBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.entriesListBox = new System.Windows.Forms.ListBox();
             this.openARCDialog = new System.Windows.Forms.OpenFileDialog();
+            this.toggleBEBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +53,8 @@
             this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
-            this.editBtn});
+            this.editBtn,
+            this.toggleBEBtn});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(700, 25);
@@ -177,6 +179,16 @@
             this.openARCDialog.Filter = "Nintendo ARC Files|*.arc";
             this.openARCDialog.Title = "Open ARC";
             // 
+            // toggleBEBtn
+            // 
+            this.toggleBEBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toggleBEBtn.Image = ((System.Drawing.Image)(resources.GetObject("toggleBEBtn.Image")));
+            this.toggleBEBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toggleBEBtn.Name = "toggleBEBtn";
+            this.toggleBEBtn.Size = new System.Drawing.Size(158, 22);
+            this.toggleBEBtn.Text = "toggle BE/LE (BE by default)";
+            this.toggleBEBtn.Click += new System.EventHandler(this.toggleBEBtn_Click);
+            // 
             // BMGEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -213,5 +225,6 @@
         private System.Windows.Forms.ToolStripMenuItem openBCSVBtn;
         private System.Windows.Forms.OpenFileDialog openARCDialog;
         private System.Windows.Forms.ToolStripMenuItem openFlowEditorBtn;
+        private System.Windows.Forms.ToolStripButton toggleBEBtn;
     }
 }

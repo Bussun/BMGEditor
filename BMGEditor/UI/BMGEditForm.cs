@@ -133,5 +133,11 @@ namespace BMGEditor
             Form bcsvEdit = new BcsvEditorForm(m_ARC);
             bcsvEdit.Show();
         }
+
+        private void toggleBEBtn_Click(object sender, EventArgs e)
+        {
+            Tests.isBE = !Tests.isBE;
+            MessageBox.Show("Switched successfully");
+        }
     }
 }
