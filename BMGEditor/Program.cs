@@ -11,6 +11,7 @@ namespace BMGEditor
         public const string softwareVersion = "v1.0";
         public const UInt64 build = 1;
         public const bool isBeta = false;
+        public const bool isBE = true;
     }
     internal static class Program
     {

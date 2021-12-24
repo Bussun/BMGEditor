@@ -258,7 +258,7 @@ namespace BMGEditor
         }
 
         [Obsolete]
-        public void DeleteEntry(Int32 entryIndex) //Problem: if custom entries, alphabetical index != in-game/tbl index
+        public void DeleteEntry(Int32 entryIndex)
         {
             Entries.Remove(Entries[entryIndex]);
             INF1itemNumber--;
