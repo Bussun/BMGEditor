@@ -12,7 +12,10 @@ An editor in C# to edit BMG files from Super Mario Galaxy
   - Editing message files from Super Mario Galaxy **_2_**
   
 ## Issues
-  If you notice aa bug or if you think something's missing, please open an issue
+  If you notice a bug or if you think something's missing, please open an issue
   
 ### Other
   Please avoid forking the repo if you don't plan to open a pull request later on. Contributions here are welcome
+  
+## Credits and license
+  Comming soon
