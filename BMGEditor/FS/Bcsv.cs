@@ -11,7 +11,7 @@ namespace BMGEditor
         public Bcsv(FileBase file)
         {
             m_File = file;
-            m_File.BigEndian = true;
+            m_File.BigEndian = (Tests.isBE) ? true : false;
             m_File.Encoding = Encoding.GetEncoding(20127);
 
             Fields = new Dictionary<uint, Field>();

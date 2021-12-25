@@ -13,7 +13,7 @@ namespace BMGEditor
         {
             m_File = file;
             m_File.Stream = new Yaz0Stream(m_File.Stream);
-            m_File.BigEndian = true;
+            m_File.BigEndian = (Tests.isBE) ? true : false;
 
             m_File.Stream.Position = 0;
             uint tag = m_File.Reader.ReadUInt32();
