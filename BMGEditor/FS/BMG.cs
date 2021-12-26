@@ -99,9 +99,8 @@ namespace BMGEditor
                 m_File.Stream.Position += 0x01;
             }
 
-            while (m_File.Reader.ReadByte() != 0x44)
+            while (m_File.Stream.Position % 32 != 0x00)
                 m_File.Stream.Position += 0x01;
-            m_File.Stream.Position -= 1;
 
             //DAT1
             DAT1sectionStart = m_File.Stream.Position;
