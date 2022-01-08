@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BMGEditor
 {
-    public static class Yaz0
+    public static class Yaz0 // ONLY WORKS WITH BIG ENDIAN - TO REWRITE !!
     {
         // TODO: put compression in use?
         // note: compression is slow when dealing with large files (eg. 3D models)

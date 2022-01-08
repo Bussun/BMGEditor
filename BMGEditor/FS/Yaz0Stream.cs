@@ -6,7 +6,7 @@ using System.IO;
 
 namespace BMGEditor
 {
-    public class Yaz0Stream : MemoryStream
+    public class Yaz0Stream : MemoryStream //ONLY WORKS WITH BIG ENDIAN - TO REWRITE !!
     {
         public Yaz0Stream(Stream backend)
             : base(1)
