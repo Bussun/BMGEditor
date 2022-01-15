@@ -24,30 +24,6 @@ namespace BMGEditor
             Write(buffer, 0, buffer.Length);
         }
 
-        public void Flush(bool recompress)
-        {
-            byte[] buffer = new byte[Length];
-            Position = 0;
-            Read(buffer, 0, (int)Length);
-            if (recompress) Yaz0.Compress(ref buffer);
-
-            m_Backend.Position = 0;
-            m_Backend.SetLength(buffer.Length);
-            m_Backend.Write(buffer, 0, buffer.Length);
-            m_Backend.Flush();
-        }
-
-        public override void Flush()
-        {
-            Flush(false);
-        }
-
-        public override void Close()
-        {
-            m_Backend.Close();
-            base.Close();
-        }
-
 
         private Stream m_Backend;
     }
