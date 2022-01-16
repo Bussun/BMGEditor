@@ -205,6 +205,7 @@ namespace BMGEditor
             return ret;
         }
 
+        //TODO: Rewrite this (escape sequences handling)
         public string ReadWideCharString()
         {
             byte escSeqLength;
