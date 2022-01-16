@@ -1,4 +1,4 @@
-# BMGEditor
+# Luma
 An editor in C# to edit BMG files from Super Mario Galaxy
 
 ## Features
@@ -15,7 +15,14 @@ An editor in C# to edit BMG files from Super Mario Galaxy
   If you notice a bug or if you think something's missing, please open an issue
   
 ### Other
-  Please avoid forking the repo if you don't plan to open a pull request later on. Contributions here are welcome
+  DON'T fork the repository. Contributions here are welcome, encouraged and recommended.
+
+## Building the software
+  Download and open the solution in Visual Studio Community. It should build without any issue
   
 ## Credits and license
-  Comming soon
+  You can find the license in LICENSE.md (It's short don't worry)
+
+  Credits:
+  - The old C# version of Whitehole for RARC, BCSV and big endian code
+  - YAZ0 decoding code inspired by EveryFileExplorer

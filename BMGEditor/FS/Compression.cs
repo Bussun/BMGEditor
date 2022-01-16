@@ -35,6 +35,7 @@ namespace BMGEditor
                     {
                         Array.Resize(ref data, decompSize);
                         output.CopyTo(data, 0);
+                        return;
                     }
                     header <<= 1;
                 }
