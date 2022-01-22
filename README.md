@@ -26,3 +26,4 @@ An editor in C# to edit BMG files from Super Mario Galaxy
   Credits:
   - The old C# version of Whitehole for RARC, BCSV and big endian code
   - YAZ0 decoding code inspired by EveryFileExplorer
+  - Please tell me if I forgot something, I'll add it asap
