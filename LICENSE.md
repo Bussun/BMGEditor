@@ -15,7 +15,7 @@ This license also grants you the right to edit the software if the following con
 
 The main repository of this project is located at: https://github.com/Bussun/BMGEditor
 
-To avoid useless forks, just DON'T make one (even if you want to contribute) You are encouraged
+To avoid useless forks, just DON'T make one (UNLESS you are planning to open a pull request) You are encouraged
 to commit to the main repository.
 
 If you plan to use some parts of code from this project, you are allowed to as long as you put credits.
