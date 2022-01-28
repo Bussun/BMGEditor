@@ -16,7 +16,7 @@ namespace BMGEditor
     public static class Tests
     {
         //Not a good place to put this I know but I'm trying to figure it out
-        public static bool isBE = true;
+        public static bool isBE = false;
     }
     internal static class Program
     {

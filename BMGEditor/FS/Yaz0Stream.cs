@@ -108,7 +108,8 @@ namespace BMGEditor
                     byte Byte2 = data[Read_Position + 1];
                     Read_Position += 2;
 
-                    uint Dist = (uint)(((Byte1 & 0xF) << 8) | Byte2);
+                    //uint Dist = (uint)(((Byte1 & 0xF) << 8) | Byte2);
+                    uint Dist = (uint)(Byte2 | ((Byte1 & 0xF) << 8));
                     uint CopySource = (uint)(Write_Position - Dist - 1);
 
                     uint Byte_Count = (uint)(Byte1 >> 4);
@@ -119,7 +120,7 @@ namespace BMGEditor
                     }
                     else
                     {
-                        Byte_Count += 1;
+                        Byte_Count += 2;
                     }
 
                     for (int i = 0; i < Byte_Count; ++i)
