@@ -19,7 +19,7 @@ An editor in C# to edit BMG files from Super Mario Galaxy
   
 ### Other
   - DON'T fork the repository. Contributions here are welcome, encouraged and recommended.
-  - BMG documentation is available here [BMG documentaion page](https://bussun.github.io/docs/bmg.html) (I'll finish writing all I know asap)
+  - BMG documentation is available here [BMG documentaion page](https://bussun.dev/docs/bmg.html) (I'll finish writing all I know asap)
 
 ## Building the software
   Download and open the solution in Visual Studio Community. It should build without any issue
