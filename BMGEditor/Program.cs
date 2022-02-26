@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using System.Net.Http;
 using System.IO;
 
+using Gtk;
+
 namespace BMGEditor
 {
     public static class Variables
@@ -23,9 +25,16 @@ namespace BMGEditor
         [STAThread]
         static void Main()
         {
-            ApplicationConfiguration.Initialize();
+            //ApplicationConfiguration.Initialize();
             Bcsv.PopulateHashtable();
-            Application.Run(new BMGEditForm());
+            //Application.Run(new BMGEditForm());
+
+            Gtk.Application.Init();
+            Window windo = new Window("GTKSharp test");
+            windo.Resize(200, 200);
+
+            windo.ShowAll();
+            Gtk.Application.Run();
         }
 
         static readonly HttpClient wrClient = new HttpClient();
