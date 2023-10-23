@@ -25,16 +25,10 @@ namespace BMGEditor
         [STAThread]
         static void Main()
         {
-            //ApplicationConfiguration.Initialize();
+            ApplicationConfiguration.Initialize();
             Bcsv.PopulateHashtable();
-            //Application.Run(new BMGEditForm());
+            System.Windows.Forms.Application.Run(new BMGEditForm());
 
-            Gtk.Application.Init();
-            Window windo = new Window("GTKSharp test");
-            windo.Resize(200, 200);
-
-            windo.ShowAll();
-            Gtk.Application.Run();
         }
 
         static readonly HttpClient wrClient = new HttpClient();
