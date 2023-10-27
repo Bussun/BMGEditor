@@ -7,14 +7,14 @@ namespace BMGEditor
     {
         private void openEditor()
         {
-            Form txtEditForm = new TextEntryEditorForm(m_File.Entries[entriesListBox.SelectedIndex]);
+            Form txtEditForm = new TextEntryEditorForm(m_BMG.Entries[entriesListBox.SelectedIndex]);
             txtEditForm.Show();
         }
 
         private void RefreshEntriesList()
         {
             entriesListBox.Items.Clear();
-            foreach (BMG.TextEntry txtEntry in m_File.Entries)
+            foreach (BMG.TextEntry txtEntry in m_BMG.Entries)
             {
                 entriesListBox.Items.Add(txtEntry.entryName);
             }
@@ -22,7 +22,7 @@ namespace BMGEditor
 
         private void Save()
         {
-            m_File.Entries.Sort((x, y) =>
+            m_BMG.Entries.Sort((x, y) =>
             {
                 string entryNameA = x.entryName, entryNameB = y.entryName;
                 return String.CompareOrdinal(entryNameA, entryNameB);
@@ -30,7 +30,7 @@ namespace BMGEditor
 
             m_BCSV.Entries.Clear();
 
-            foreach (BMG.TextEntry txtEntry in m_File.Entries)
+            foreach (BMG.TextEntry txtEntry in m_BMG.Entries)
             {
                 Bcsv.Entry entry = new Bcsv.Entry();
                 m_BCSV.Entries.Add(entry);
@@ -76,19 +76,20 @@ namespace BMGEditor
             }
 
             m_BCSV.Flush();
-            m_File.Entries.Sort((x, y) =>
+            m_BMG.Entries.Sort((x, y) =>
             {
                 int entryIndexA = x.entryNo, entryIndexB = y.entryNo;
                 return entryIndexA.CompareTo(entryIndexB);
             });
 
-            m_File.WriteToFile();
+            m_BMG.WriteToFile();
         }
         private void CloseArchive()
         {
-            m_File.Close();
+            m_BMG.Close();
             m_BCSV.Close();
             m_ARC.Close();
+            m_File.Close();
         }
     }
 }

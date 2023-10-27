@@ -7,20 +7,11 @@ namespace BMGEditor
 {
     public partial class BMGEditForm : Form
     {
+        private ExternalFile m_File = null;
         private RarcFilesystem m_ARC = null;
-        private BMG m_File = null;
+        private BMG m_BMG = null;
         private Bcsv m_BCSV = null;
         private bool arcOpen = false;
-
-        [Obsolete]
-        public BMGEditForm(RarcFilesystem m_ARC)
-        {
-            InitializeComponent();
-            Text = $"Text editor - {Variables.softwareName} {Variables.softwareVersion}";
-            if (Variables.isBeta) Text += " [BETA]";
-            
-            deleteEntryBtn.Enabled = false;
-        }
 
         public BMGEditForm()
         {
@@ -50,7 +41,7 @@ namespace BMGEditor
 
         private void addEntryBtn_Click(object sender, EventArgs e)
         {
-            Form newEntryForm = new NewEntryForm(m_File);
+            Form newEntryForm = new NewEntryForm(m_BMG);
             newEntryForm.ShowDialog();
             RefreshEntriesList();
 
@@ -69,10 +60,13 @@ namespace BMGEditor
         private void saveBMGbtn_Click(object sender, EventArgs e)
         {
             Save();
+            m_ARC.Flush();
+            m_File.Flush();
         }
 
         private void quitBtn_Click(object sender, EventArgs e)
         {
+            CloseArchive();
             Dispose();
         }
 
@@ -95,7 +89,8 @@ namespace BMGEditor
             {
                 fileName = openARCDialog.FileName;
                 File.Copy(fileName, fileName + ".backup", true);
-                m_ARC = new RarcFilesystem(new ExternalFile(fileName, false));
+                m_File = new ExternalFile(fileName, false);
+                m_ARC = new RarcFilesystem(m_File);
                 if (m_ARC.FileExists($"{m_ARC.rootName}/message.bmg") && m_ARC.FileExists($"{m_ARC.rootName}/messageid.tbl"))
                 {
 
@@ -108,11 +103,12 @@ namespace BMGEditor
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     m_ARC.Close();
+                    m_File.Close();
                     return;
                 }
                 arcOpen = true;
                 m_BCSV = new Bcsv(m_ARC.OpenFile($"{m_ARC.rootName}/messageid.tbl"));
-                m_File = new BMG(m_ARC.OpenFile($"{m_ARC.rootName}/message.bmg"), m_BCSV);
+                m_BMG = new BMG(m_ARC.OpenFile($"{m_ARC.rootName}/message.bmg"), m_BCSV);
                 RefreshEntriesList();
 
                 saveFileBtn.Enabled = true;

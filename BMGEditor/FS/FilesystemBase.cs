@@ -69,11 +69,11 @@ namespace BMGEditor
         private void InitRW()
         {
             //Original code
-            Reader = m_BigEndian ? new BinaryReaderBE(m_Stream, m_Encoding) : new BinaryReader(m_Stream, m_Encoding);
-            Writer = m_BigEndian ? new BinaryWriterBE(m_Stream, m_Encoding) : new BinaryWriter(m_Stream, m_Encoding);
+            //Reader = m_BigEndian ? new BinaryReaderBE(m_Stream, m_Encoding) : new BinaryReader(m_Stream, m_Encoding);
+            //Writer = m_BigEndian ? new BinaryWriterBE(m_Stream, m_Encoding) : new BinaryWriter(m_Stream, m_Encoding);
 
-            //Reader = Tests.isBE ? new BinaryReaderBE(m_Stream, m_Encoding) : new BinaryReader(m_Stream, m_Encoding);
-            //Writer = Tests.isBE ? new BinaryWriterBE(m_Stream, m_Encoding) : new BinaryWriter(m_Stream, m_Encoding);
+            Reader = Tests.isBE ? new BinaryReaderBE(m_Stream, m_Encoding) : new BinaryReader(m_Stream, m_Encoding);
+            Writer = Tests.isBE ? new BinaryWriterBE(m_Stream, m_Encoding) : new BinaryWriter(m_Stream, m_Encoding);
         }
 
 

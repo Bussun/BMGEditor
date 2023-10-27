@@ -137,11 +137,6 @@ namespace BMGEditor
 
             Array.Resize(ref data, decompSize + 1);
             output.CopyTo(data, 0);
-
-            FileStream test = File.OpenWrite("./test.bin");
-            test.Write(output);
-            test.Flush();
-            test.Close();
             return;
         }
     }

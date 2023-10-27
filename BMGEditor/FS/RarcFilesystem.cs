@@ -105,6 +105,11 @@ namespace BMGEditor
             m_File.Close();
         }
 
+        public void Flush()
+        {
+            m_File.Flush();
+        }
+
 
         public override bool DirectoryExists(string directory)
         {

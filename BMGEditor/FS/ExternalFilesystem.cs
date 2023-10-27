@@ -67,7 +67,7 @@ namespace BMGEditor
     {
         public ExternalFile(string filename, bool create)
         {
-            Stream = File.Open(filename, create ? FileMode.Create : FileMode.Open, FileAccess.ReadWrite, FileShare.Read);
+            Stream = File.Open(filename, create ? FileMode.Create : FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
         }
     }
 }
