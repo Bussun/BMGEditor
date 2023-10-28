@@ -133,7 +133,7 @@ namespace BMGEditor
         private void toggleBEBtn_Click(object sender, EventArgs e)
         {
             Tests.isBE = !Tests.isBE;
-            MessageBox.Show("Switched successfully");
+            MessageBox.Show($"Switched successfully to {((Tests.isBE) ? "big endian" : "little endian")}");
         }
     }
 }

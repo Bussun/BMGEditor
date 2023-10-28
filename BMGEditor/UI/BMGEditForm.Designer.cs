@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BMGEditForm));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.fileMenu = new System.Windows.Forms.ToolStripSplitButton();
+            this.fileMenu = new System.Windows.Forms.ToolStripDropDownButton();
             this.openArcFileBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.openSettingsBtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -186,7 +186,7 @@
             this.toggleBEBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toggleBEBtn.Name = "toggleBEBtn";
             this.toggleBEBtn.Size = new System.Drawing.Size(158, 22);
-            this.toggleBEBtn.Text = "toggle BE/LE (BE by default)";
+            this.toggleBEBtn.Text = "Change endianness (BE by default)";
             this.toggleBEBtn.Click += new System.EventHandler(this.toggleBEBtn_Click);
             // 
             // BMGEditForm
@@ -213,7 +213,7 @@
 
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ListBox entriesListBox;
-        private System.Windows.Forms.ToolStripSplitButton fileMenu;
+        private System.Windows.Forms.ToolStripDropDownButton fileMenu;
         private System.Windows.Forms.ToolStripMenuItem openArcFileBtn;
         private System.Windows.Forms.ToolStripMenuItem saveFileBtn;
         private System.Windows.Forms.ToolStripMenuItem quitBtn;
