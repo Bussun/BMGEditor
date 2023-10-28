@@ -54,7 +54,7 @@ namespace BMGEditor
         {
             m_File_Tbl = tbl;
             m_File = file;
-            m_File.BigEndian = (Tests.isBE) ? true : false;
+            m_File.BigEndian = Tests.isBE;
             m_File.Encoding = (Tests.isBE) ? Encoding.BigEndianUnicode : Encoding.Unicode;
             m_File.Stream.Position = 0;
 
