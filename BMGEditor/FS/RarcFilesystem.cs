@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Drawing.Text;
 
 namespace BMGEditor
 {
@@ -107,7 +108,7 @@ namespace BMGEditor
 
         public void Flush()
         {
-            m_File.Flush();
+            m_File.Stream.Flush();
         }
 
 

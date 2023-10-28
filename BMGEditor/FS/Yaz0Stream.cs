@@ -21,6 +21,19 @@ namespace BMGEditor
             Write(buffer, 0, buffer.Length);
         }
 
+        override public void Flush()
+        {
+            m_Backend.SetLength(Length);
+            Position = 0x00;
+            m_Backend.Position = 0x00;
+
+            while (Position < Length)
+            {
+                m_Backend.WriteByte((byte)ReadByte());
+            }
+
+            m_Backend.Flush();
+        }
 
         private Stream m_Backend;
     }
