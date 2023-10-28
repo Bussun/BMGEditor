@@ -296,7 +296,7 @@ namespace BMGEditor
                 m_File.Writer.Write((Byte)entry.messageAreaOpt);
                 m_File.Writer.Write((Byte)0xFF);
             }
-            while (m_File.Stream.Position % 16 != 0x00)
+            while (m_File.Stream.Position % 32 != 0x00)
                 m_File.Writer.Write((Byte)0x00);
             Int64 INF1end = m_File.Stream.Position;
             m_File.Stream.Position = INF1start + 0x04;
