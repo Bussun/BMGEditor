@@ -66,7 +66,8 @@ namespace BMGEditor
 
         private void quitBtn_Click(object sender, EventArgs e)
         {
-            CloseArchive();
+            if (arcOpen)
+                CloseArchive();
             Dispose();
         }
 
